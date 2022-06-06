@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Collider2D myCollider = null;
     private Rigidbody2D myRb = null;
+    private Animator myAnim = null;
 
     const float WORLD_SIZE_X = 100f;
     const float WORLD_SIZE_Y = 100f;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myCollider = GetComponent<Collider2D>();
         myRb = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,9 +35,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal"); ;
         float verticalInput = Input.GetAxis("Vertical");
-
-        myRb.AddForce((new Vector2(horizontalInput, verticalInput) * moveSpeed));
-
+        if (Math.Abs(verticalInput) <= Mathf.Epsilon && Math.Abs(horizontalInput) <= Mathf.Epsilon)
+        {
+            myAnim.speed = 0;
+        }
+        else
+        {
+            myAnim.SetFloat("horizontal", horizontalInput);
+            myAnim.SetFloat("vertical", verticalInput);
+            myAnim.speed = 1;
+            myRb.AddForce((new Vector2(horizontalInput, verticalInput) * moveSpeed));
+        }
         /*
         if (transform.position.x >= WORLD_SIZE_X && horizontalInput > 0)
         {
