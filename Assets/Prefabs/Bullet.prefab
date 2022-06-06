@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8008797631997456011}
   - component: {fileID: 8008797631997456010}
   - component: {fileID: 8008797631997456013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &8008797631997456013
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +109,7 @@ GameObject:
   - component: {fileID: 1789573560750813284}
   - component: {fileID: -2037036220835408623}
   - component: {fileID: 7746503473170614436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -141,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9175656291784c43a006c425e891765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 25
 --- !u!114 &3617072949705731675
 MonoBehaviour:
   m_ObjectHideFlags: 0

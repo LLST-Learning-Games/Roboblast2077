@@ -17,9 +17,10 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 moveDir = (target.transform.position - transform.position).normalized;
+        //myRb.AddForce(moveDir * moveSpeed);
         myRb.MovePosition(transform.position + moveDir * Time.deltaTime * moveSpeed);
     }
 }

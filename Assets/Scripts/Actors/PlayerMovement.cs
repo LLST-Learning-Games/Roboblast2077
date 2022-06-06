@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         GetMovement();
     }
@@ -34,31 +34,34 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal"); ;
         float verticalInput = Input.GetAxis("Vertical");
 
+        myRb.AddForce((new Vector2(horizontalInput, verticalInput) * moveSpeed));
 
+        /*
         if (transform.position.x >= WORLD_SIZE_X && horizontalInput > 0)
         {
             horizontalInput = 0;
-            transform.position = new Vector3(WORLD_SIZE_X, transform.position.y, 0);
+            transform.position = new Vector2(WORLD_SIZE_X, transform.position.y);
         }
         else if (transform.position.x <= -WORLD_SIZE_X && horizontalInput < 0)
         {
             horizontalInput = 0;
-            transform.position = new Vector3(-WORLD_SIZE_X, transform.position.y, 0);
+            transform.position = new Vector2(-WORLD_SIZE_X, transform.position.y);
         }
 
         if (transform.position.y >= WORLD_SIZE_Y && verticalInput > 0)
         {
             verticalInput = 0;
-            transform.position = new Vector3(transform.position.x, WORLD_SIZE_Y, 0);
+            transform.position = new Vector2(transform.position.x, WORLD_SIZE_Y);
         }
         else if (transform.position.y <= -WORLD_SIZE_Y && verticalInput < 0)
         {
             verticalInput = 0;
-            transform.position = new Vector3(transform.position.x, -WORLD_SIZE_Y, 0);
+            transform.position = new Vector2(transform.position.x, -WORLD_SIZE_Y);
         }
+        */
 
         //transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * moveSpeed);
-        myRb.MovePosition(transform.position + (new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * moveSpeed));
+        //myRb.MovePosition(myRb.position + (new Vector2(horizontalInput, verticalInput) * Time.deltaTime * moveSpeed));
     }
 
     

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3563693134814138816}
   - component: {fileID: 3563693134814138817}
   - component: {fileID: 3563693134814138818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &3563693134814138818
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104,7 +106,7 @@ GameObject:
   - component: {fileID: 3563693134842520846}
   - component: {fileID: 3563693134842520847}
   - component: {fileID: 3563693134842520845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,3 +155,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 8008797632819411523, guid: 48d162c31faa1fa449fbbe8879322f2c,
     type: 3}
+  spawnDist: 1

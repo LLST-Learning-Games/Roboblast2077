@@ -20,7 +20,7 @@ public class ProjectileMotion : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //transform.Translate(motionDirection * moveSpeed * Time.deltaTime);
         myRb.MovePosition(transform.position + (motionDirection.normalized * Time.deltaTime * moveSpeed));
