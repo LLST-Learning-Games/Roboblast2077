@@ -7,7 +7,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 70f;
+    [SerializeField] private float lightOffset = 5f;
+    [SerializeField] private Light myLight = null;
 
     private Collider2D myCollider = null;
     private Rigidbody2D myRb = null;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myRb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -33,19 +36,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal"); ;
-        float verticalInput = Input.GetAxis("Vertical");
-        if (Math.Abs(verticalInput) <= Mathf.Epsilon && Math.Abs(horizontalInput) <= Mathf.Epsilon)
+        Vector2 moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (moveDir.magnitude <= Mathf.Epsilon)
         {
             myAnim.speed = 0;
         }
         else
         {
-            myAnim.SetFloat("horizontal", horizontalInput);
-            myAnim.SetFloat("vertical", verticalInput);
-            myAnim.speed = 1;
-            myRb.AddForce((new Vector2(horizontalInput, verticalInput) * moveSpeed));
+            myAnim.SetFloat("horizontal", moveDir.x);
+            myAnim.SetFloat("vertical", moveDir.y);
+            myAnim.speed = moveDir.magnitude;
+            myRb.AddForce((moveDir * moveSpeed));
+            myLight.transform.position = new Vector3(transform.position.x + moveDir.x * lightOffset,
+                transform.position.y + moveDir.y * lightOffset,
+                myLight.transform.position.z);
         }
+
+
+        //////////////////////////////////
+        /// Legacy input 
+        //////////////////////////////////
+        
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //float verticalInput = Input.GetAxis("Vertical");
+
+        //if (Math.Abs(verticalInput) <= Mathf.Epsilon && Math.Abs(horizontalInput) <= Mathf.Epsilon)
+        //{
+        //    myAnim.speed = 0;
+        //}
+        //else
+        //{
+        //    myAnim.SetFloat("horizontal", horizontalInput);
+        //    myAnim.SetFloat("vertical", verticalInput);
+        //    myAnim.speed = 1;
+        //    myRb.AddForce((new Vector2(horizontalInput, verticalInput) * moveSpeed));
+        //    myLight.transform.position = new Vector3(transform.position.x + horizontalInput * lightOffset, 
+        //        transform.position.y + verticalInput * lightOffset, 
+        //        myLight.transform.position.z);
+        //}
+
+
+
         /*
         if (transform.position.x >= WORLD_SIZE_X && horizontalInput > 0)
         {

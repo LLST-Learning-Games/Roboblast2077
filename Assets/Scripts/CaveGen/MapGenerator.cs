@@ -26,13 +26,12 @@ public class MapGenerator : MonoBehaviour {
 		GenerateMap();
 	}
 
-	void Update() {
-		if (Input.GetMouseButtonDown(0)) {
-			spawner.ClearEnemies();
-			GenerateMap();
-			
-		}
-	}
+	//void Update() {
+	//	if (Input.GetMouseButtonDown(0)) {
+	//		spawner.ClearEnemies();
+	//		GenerateMap();
+	//	}
+	//}
 
     
 
